@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="HeaderNoRatio">
+        <item name="android:background">@color/red</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="HeaderNoRatio.Dark">
+        <item name="android:background">@color/red_dark</item>
+    </style>
+
+    <style name="Header">
+        <item name="android:background">@color/red</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="layout_constraintDimensionRatio">1:0.1</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="Header.Dark">
+        <item name="android:background">@color/red_dark</item>
+    </style>
+</resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".BaseActivity">
+
+    <item
+        android:id="@+id/action_home"
+        android:orderInCategory="1"
+        android:title="@string/create_race"
+        android:icon="@drawable/ic_baseline_edit_24"
+        app:showAsAction="always"
+        tools:ignore="AlwaysShowAction" />
+
+    <item
+        android:id="@+id/action_race"
+        android:orderInCategory="10"
+        android:title="@string/race"
+        android:icon="@drawable/ic_baseline_directions_run_24"
+        app:showAsAction="always"
+        tools:ignore="AlwaysShowAction" />
+
+    <item
+        android:id="@+id/action_history"
+        android:orderInCategory="20"
+        android:title="@string/history"
+        android:icon="@drawable/ic_baseline_history_24"
+        app:showAsAction="always"
+        tools:ignore="AlwaysShowAction" />
+
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="30"
+        android:title="@string/settings"
+        android:icon="@drawable/ic_baseline_settings_24"
+        app:showAsAction="always"
+        tools:ignore="AlwaysShowAction" />
+</menu>
