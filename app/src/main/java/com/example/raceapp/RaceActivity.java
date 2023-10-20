@@ -537,7 +537,7 @@ public class RaceActivity extends BaseActivity implements View.OnClickListener, 
             long ambientChangeTime = System.currentTimeMillis(); //local ambient time
             if (ambient <= Settings.pocketAmbientThreshold)
             {
-                if(!determiningDarkness) //Is negative 1 - update the darkness time.
+                if(!determiningDarkness) //Wasn't determining darkness, now it is - update the darkness time.
                 {
                     determiningDarkness = true;
                     lastAmbientChange = ambientChangeTime;

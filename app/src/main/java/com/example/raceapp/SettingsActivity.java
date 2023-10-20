@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.MediaController;
 import android.widget.SeekBar;
@@ -100,13 +101,21 @@ public class SettingsActivity extends BaseActivity implements MediaController.Me
         controller = new MediaController(this)
         { //anonymous class to prevent MediaController from hiding
             @Override
-            public void hide() {
-                if(!stayActive) //prevent a memory leak error
+            public void hide() { // We only want to hide the media controller when it's NOT ACTIVE
+                if(!stayActive) //prevent a memory leak error. If it's not active, then we can hide it.
                 {
                     super.hide();
                     stayActive = true; //auto set it to true.
                 }
             } //do not hide!
+
+            public boolean dispatchKeyEvent(KeyEvent event) // Overwrite the "go back" button for media controller, as we want go back to send to previous activity instead.
+            {
+                if (event.getKeyCode() == KeyEvent.KEYCODE_BACK)
+                    ((Activity) getContext()).finish();
+
+                return super.dispatchKeyEvent(event);
+            }
         };
         controller.setMediaPlayer(this);
 
@@ -161,11 +170,11 @@ public class SettingsActivity extends BaseActivity implements MediaController.Me
     }//onCreate
 
     @Override
-    protected void onStop()
+    protected void onPause() // Activity is not visible anymore NOTE: (Previously was onStop, but caused some potential error as that only occurs once the activity gets destroyed
     {
-        super.onStop();
+        super.onPause();
 
-        stayActive = false; //hide it
+        stayActive = false; // hide the media controller, as it doesn't need to be active anymore
         controller.hide();
 
         //Clear and save the preferences.

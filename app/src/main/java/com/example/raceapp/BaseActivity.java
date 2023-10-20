@@ -34,6 +34,7 @@ public class BaseActivity extends AppCompatActivity
             Intent intent = new Intent(this, activityClass);
             intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT); // no need to multiple new activities
             this.startActivity(intent);
+            overridePendingTransition(0, 0); // Disables the default slide animation
         }
     }//StartIntent
 
