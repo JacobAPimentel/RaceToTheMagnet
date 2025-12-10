@@ -12,7 +12,7 @@ public abstract class RaceRoomDatabase extends RoomDatabase //abstract as we do 
 {
     public abstract RaceDao raceDao();
 
-    private static RaceRoomDatabase INSTANCE; //make sure only one data base gets created
+    private static volatile RaceRoomDatabase INSTANCE; //make sure only one data base gets created
 
     static RaceRoomDatabase getDatabase(final Context context)
     {

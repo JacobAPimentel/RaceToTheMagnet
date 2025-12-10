@@ -48,7 +48,7 @@ public class Racer implements java.io.Serializable
 
     public long getBestTime()
     {
-        if (attempts.size() > 0) // in case user did not have any attempt...
+        if (!attempts.isEmpty()) // in case user did not have any attempt...
             return attempts.get(bestAttempt);
         else
             return 1000000001; //a really large number

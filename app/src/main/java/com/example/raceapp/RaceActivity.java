@@ -1,5 +1,6 @@
 package com.example.raceapp;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -19,7 +20,6 @@ import android.os.Bundle;
 import android.os.PowerManager;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -239,7 +239,8 @@ public class RaceActivity extends BaseActivity implements View.OnClickListener, 
         });
     }//StartRace
 
-    public void DisableRotation(boolean disable) //do not want to change orientation when timer is on.
+    @SuppressLint("SourceLockedOrientationActivity") //We do not want to be able to switch orientation when the timer is on.
+    public void DisableRotation(boolean disable)
     {
         //Thank you: https://stackoverflow.com/questions/2366706/how-to-lock-orientation-during-runtime/10488012#10488012
         if(disable)
@@ -269,7 +270,7 @@ public class RaceActivity extends BaseActivity implements View.OnClickListener, 
         cols[1].setText(Format.Time(time));
     }//AddAttemptRow
 
-    public void Sleep(long milli) //I was getting sick of doing multiple try catch.
+    public void Sleep(long milli)
     {
         try
         {
@@ -288,7 +289,7 @@ public class RaceActivity extends BaseActivity implements View.OnClickListener, 
         {
             List<NotificationChannel> channels = notifyManager.getNotificationChannels();
 
-            if(channels.size() > 0) //channel already exist
+            if(!channels.isEmpty()) //channel already exist
             {
                 for(NotificationChannel channel : channels)
                 {
